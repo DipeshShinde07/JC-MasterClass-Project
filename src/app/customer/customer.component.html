@@ -1,0 +1,22 @@
+<nav class="navbar navbar-dark bg-dark justify-content-end">
+  <span class="navbar-brand mb-0 h1">Welcome {{ UserName }}</span
+  ><a
+    class="navbar-brand mb-0 h1 underline"
+    routerLink="/login"
+    (click)="logout()"
+    ><u>Logout</u></a
+  >
+</nav>
+<div class="container-fluid pt-3">
+  <app-cutomer-list
+    *ngIf="!ShowList"
+    [CustomerList]="CustomerList"
+    (onAddClick)="Add()"
+  ></app-cutomer-list>
+  <!-- <input type=""[hidden]="" (change)="Add()"> -->
+  <app-cutomer-add
+    *ngIf="ShowList"
+    (onSubmitClick)="onSubmit($event)"
+    (onCancelClick)="Cancel()"
+  ></app-cutomer-add>
+</div>

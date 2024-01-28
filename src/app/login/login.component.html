@@ -1,0 +1,59 @@
+<form class="modal-content" [formGroup]="LoginForm">
+  <div class="container">
+    <h1>Login form</h1>
+    <span *ngIf="!($IsValid | async)">Invalid Credentials</span>
+    <hr />
+    <label for="email"><b>User Name</b></label>
+    <input
+      type="text"
+      placeholder="Enter Email"
+      name="email"
+      formControlName="userName"
+    />
+    <span
+      class="error"
+      [hidden]="
+        LoginForm.controls.userName.dirty && LoginForm.controls.userName.valid
+      "
+      >Please enter valid data</span
+    >
+    <br />
+
+    <label for="psw"><b>Password</b></label>
+    <input
+      type="password"
+      placeholder="Enter Password"
+      name="psw"
+      formControlName="Password"
+    />
+    <span
+      class="error"
+      [hidden]="
+        LoginForm.controls.Password.dirty && LoginForm.controls.Password.valid
+      "
+      >Please enter valid data</span
+    >
+    <br />
+    <label>
+      <input
+        type="checkbox"
+        checked="checked"
+        name="remember"
+        style="margin-bottom: 15px"
+      />
+      Remember me
+    </label>
+
+    <div class="clearfix">
+      <button type="button" class="cancelbtn">Cancel</button>
+      <button
+        type="button"
+        (click)="Login()"
+        [disabled]="LoginForm.invalid"
+        class="signupbtn"
+      >
+        Login {{ LoginForm.valid }}
+      </button>
+    </div>
+  </div>
+</form>
